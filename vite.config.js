@@ -6,6 +6,7 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
+    base: '/goit-js-hw-09/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -20,13 +21,13 @@ export default defineConfig(({ command }) => {
               return 'vendor';
             }
           },
-          entryFileNames: chunkInfo => {
+          entryFileNames: (chunkInfo) => {
             if (chunkInfo.name === 'commonHelpers') {
               return 'commonHelpers.js';
             }
             return '[name].js';
           },
-          assetFileNames: assetInfo => {
+          assetFileNames: (assetInfo) => {
             if (assetInfo.name && assetInfo.name.endsWith('.html')) {
               return '[name].[ext]';
             }
